@@ -23,3 +23,57 @@
 .button-column button.active {
     background-color: green;
 }
+
+.task-list {
+  --accent:  #4f46e5;
+  --card:    #ffffff;
+  --border:  #e5e7eb;
+  --text:    #1f2933;
+  --muted:   #6b7280;
+
+  counter-reset: task;
+
+  list-style: none;
+  display: grid;
+  gap: 12px;
+  max-width: 74ch;
+  margin-block: 24px;
+  margin-inline: auto;
+}
+
+.task-list__item {
+  counter-increment: task;
+  position: relative;
+
+  padding: 14px 18px 14px 52px;   /* слева место под номер */
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  box-shadow: 0 1px 2px rgba(15, 23, 42, .05);
+
+  color: var(--text);
+  font: 400 1rem / 1.6 "Inter", "Segoe UI", system-ui, sans-serif;
+
+  overflow-wrap: break-word;   /* длинные слова / URL не ломают сетку */
+  text-wrap: pretty;           /* ровнее переносы, поддержка постепенная */
+  transition: transform .15s ease, box-shadow .15s ease, border-color .15s ease;
+}
+
+/* номер задачи */
+.task-list__item::before {
+  content: counter(task);
+  position: absolute;
+  top: 14px;
+  left: 14px;
+
+  display: grid;
+  place-items: center;
+  width: 26px;
+  height: 26px;
+  border-radius: 8px;
+
+  font-size: .8rem;
+  font-weight: 650;
+  color: var(--accent);
+  background: color-mix(in srgb, var(--accent) 12%, transparent);
+}

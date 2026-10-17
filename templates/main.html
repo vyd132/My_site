@@ -7,7 +7,6 @@
 </head>
 <body>
     <h1><a href="/">{{ title }}</a></h1>
-{{ text1 }}
     <div class="button-column">
         {% for name in buttons %}
             <button type="button" class="{{ 'active' if num==name }}" onclick="location.href='/topic?num={{ name }}'">{{ name }}</button>
@@ -15,6 +14,12 @@
             <p>Нет доступных кнопок</p>
         {% endfor %}
     </div>
+    <br>
+    <ul class="task-list" role="list">
+        {% for text in tasktext %}
+            <li class="task-list__item">{{ text[0] }}</li>
+        {% endfor %}
+    </ul>
 
 </body>
 </html>
