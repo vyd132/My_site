@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>{{ title }}</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <h1><a href="/">{{ title }}</a></h1>
+{{ text1 }}
+    <div class="button-column">
+        {% for name in buttons %}
+            <button type="button" class="{{ 'active' if num==name }}" onclick="location.href='/topic?num={{ name }}'">{{ name }}</button>
+        {% else %}
+            <p>Нет доступных кнопок</p>
+        {% endfor %}
+    </div>
+
+</body>
+</html>
